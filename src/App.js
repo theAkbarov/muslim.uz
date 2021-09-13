@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Home from "./pages/Home";
+import Header from "./containers/Header";
+import Content from "./pages/Content/Content";
+import Footer from "./containers/Footer/Footer";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+import { set_date } from "./redux/actions";
+import { Route } from "react-router";
 function App() {
+  const dispatch = useDispatch();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Route path='/article/:id' component={Content} />
+      <Route exact path='/' component={Home} />
+      <Footer />
     </div>
   );
 }
